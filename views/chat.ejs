@@ -1,0 +1,39 @@
+<%- include ('./partials/header') %>
+	   <link href="/style.css" rel="stylesheet" type="text/css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js"></script>
+<%- include ('./partials/last') %>
+
+<div class="container-fluid">
+	<%- include ('./partials/nav') %>
+<h1> Hello everyone!!
+	<p>
+		<b>signed as <%= user.username %></b>
+		
+	</p>
+	</h1>
+	<div style="display:none;" id="handle" value="<%= user.username %>"></div>
+	<div style="display:none;" id="handle1" value="<%= user._id %>">		
+	</div>
+	<div id="chat">
+		<div id="chat-window">
+			<div id="output"></div>
+			<div id="feedback"></div>
+		</div>
+		<div>
+			<input id="message" type="text" placeholder="message" required>
+			<button id="send">
+				send
+			</button>
+			<div id="private">
+				
+			</div>
+		</div>
+	</div>
+	<div id="online">
+		
+	</div>
+	<script src="/chat.js"></script>
+	
+</div>
+<%- include ('./partials/footer') %>
+	
