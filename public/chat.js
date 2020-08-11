@@ -39,7 +39,7 @@ socket.on('online',(data)=>{
 		var name=Object.values(data[i])[0].username;
 		var key=Object.keys(data[i]);
 		var x=handle1.getAttribute('value');
-		s+=('<a href="personal/'+x+'/'+key[0]+'">'+name+'</a>');
+		s+='<li>'+name+'</li>';
 }
 	
 online.innerHTML=s;	

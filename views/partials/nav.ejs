@@ -9,23 +9,25 @@
       <li class="nav-item active pl-4 pr-4">
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item pl-4 pr-4">
-        <a class="nav-link" href="#">About</a>
-      </li>
-      <li class="nav-item pl-4 pr-4">
-        <a class="nav-link" href="#">Contact</a>
-      </li>
     </ul>
     <ul class="navbar-nav ml-auto">
-    	<li class="nav-item pl-4 pr-4">
+		<%	if(!currentUser){ %>
+				<li class="nav-item pl-4 pr-4">
         <a class="nav-link" href="/auth/register">Sign up</a>
       </li>
       <li class="nav-item pl-4 pr-4">
         <a class="nav-link" href="/auth/login">Sign in</a>
       </li>
-		 <li class="nav-item pl-4 pr-4">
+			<%	}else{ %>
+				<li class="nav-item pl-4 pr-4">
         <a class="nav-link" href="/auth/logout">logout</a>
       </li>
+		<li class="nav-item pl-4 pr-4">
+        <a class="nav-link" href="#">Signed In as <%=currentUser.username %></a>
+      </li>
+				<%} %>
+    	
+		 
     </ul>
   </div>
 </nav>

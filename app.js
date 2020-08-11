@@ -7,6 +7,7 @@ var express=require('express'),
 	localStrategy=require('passport-local'),
 	passportLocalMongoose=require('passport-local-mongoose'),
 	user=require('./models/user');
+const flash=require('connect-flash');
 app.set('view engine','ejs');
 app.use(bodyParser.urlencoded({extended:true}));
 //setting mongodb
@@ -17,6 +18,11 @@ mongoose.set('useUnifiedTopology', true);
 mongoose.connect('mongodb://localhost/chat_app');
 app.use(express.static('public'));
 let onlineuser=[];
+
+
+
+
+
 //configuring passport
 app.use(require("express-session")({
     secret: "Hi I am Aniruddha",
@@ -30,6 +36,18 @@ app.use(passport.session());
 passport.use(new localStrategy(user.authenticate()));
 passport.serializeUser(user.serializeUser());
 passport.deserializeUser(user.deserializeUser());
+
+//middleware
+app.use(flash());
+app.use(function(req,res,next){
+	res.locals.currentUser=req.user;
+	res.locals.error=req.flash("error");
+	res.locals.success=req.flash("success");
+	next();
+});
+
+
+
 //chat pages
 app.get('/',(req,res)=>{
 	res.render('index');
@@ -125,13 +143,13 @@ io.on('connection',function(socket){
 // 		io.to(`${to}`).emit('private',"hello");
 // 		}		
 // 	});
-	socket.on('personal',(data)=>{
-		console.log(data);
-			var to=onlineuser[data].socket;
-		io.to(`${to}`).emit('personal',data);
+// 	socket.on('personal',(data)=>{
+// 		console.log(data);
+// 			var to=onlineuser[data].socket;
+// 		io.to(`${to}`).emit('personal',data);
 		
 		
-});
+// });
 	socket.on('disconnect',()=>{
 		var index=onlineuser.findIndex((ele)=>{
 			ele.socket=socket.id;

@@ -10,16 +10,17 @@ h1{
 }
 
 #chat{
-    width: 90%;
-	height:90%;
-    margin: 30px auto;
+    width: 60%;
+	height:100%;
+    margin: 30px;
     border: 1px solid #ddd;
     box-shadow: 1px 3px 5px rgba(0,0,0,0.05);
     border-radius: 2px;
+	display:inline-block;
 }
 
 #chat-window{
-    height: 300px;
+    height: 700px;
     overflow: auto;
     background: #f9f9f9;
 }
@@ -69,4 +70,11 @@ button{
     padding: 12px 0;
     width: 100%;
     border-radius: 0 0 2px 2px;
+}
+
+#user{
+	display:inline-block;
+	width:20%;
+	height:700px;
+	margin:30px;
 }

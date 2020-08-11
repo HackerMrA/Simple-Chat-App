@@ -5,12 +5,6 @@
 
 <div class="container-fluid">
 	<%- include ('./partials/nav') %>
-<h1> Hello everyone!!
-	<p>
-		<b>signed as <%= user.username %></b>
-		
-	</p>
-	</h1>
 	<div style="display:none;" id="handle" value="<%= user.username %>"></div>
 	<div style="display:none;" id="handle1" value="<%= user._id %>">		
 	</div>
@@ -24,14 +18,17 @@
 			<button id="send">
 				send
 			</button>
-			<div id="private">
-				
-			</div>
 		</div>
 	</div>
-	<div id="online">
+	<div id="user">
+		<h1>
+		Online Users
+		</h1>
+		<div id="online">
 		
+		</div>
 	</div>
+	
 	<script src="/chat.js"></script>
 	
 </div>
