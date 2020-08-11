@@ -15,7 +15,7 @@ mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
-mongoose.connect('mongodb://localhost/chat_app');
+mongoose.connect("mongodb+srv://wt3rLviRvK4TKAtl:wt3rLviRvK4TKAtl@cluster0.nfcjq.mongodb.net/chatapp?retryWrites=true&w=majority");
 app.use(express.static('public'));
 let onlineuser=[];
 
@@ -101,7 +101,7 @@ function isLoggedIn(req,res,next){
 	res.redirect('/auth/login');
 }
 //socket codes
-var server=app.listen(3000,()=>{
+var server=app.listen(process.env.PORT,process.env.IP,()=>{
 	console.log('server is running');
 });
 var io=socket(server);
